@@ -29,8 +29,11 @@
             }]
         };
 
+       window.onload = function() {
         var chart = echarts.init(document.getElementById('chart'));
         chart.setOption(option);
+        console.log(option); // Check the option object
+      };
     </script>
 
 </body>
