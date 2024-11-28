@@ -1,39 +1,36 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library 1</title>
-   
-    <!-- Add defer attribute to ensure ECharts is loaded before script runs -->
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.8/dist/echarts.min.js" defer></script>
-</head>
-<body>
+<html>
+  <head>
+      <title>Library 1 </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-    <h1>Library 1</h1>
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Age', 'Weight'],
+          [ 8,      12],
+          [ 4,      5.5],
+          [ 11,     14],
+          [ 4,      5],
+          [ 3,      3.5],
+          [ 6.5,    7]
+        ]);
 
-    <!-- Chart container -->
-    <div id="chart" style="width: 600px; height: 400px;"></div>
+        var options = {
+          title: 'Age vs. Weight comparison',
+          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
+          legend: 'none'
+        };
 
-    <script>
-      // Define the chart options
-      var option = {
-        xAxis: {
-          type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-          type: 'value'
-        },
-        series: [{
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          type: 'line'
-        }]
-      };
-        
-        var chart = echarts.init(document.getElementById('chart'));
-        chart.setOption(option);
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
     </script>
-
-</body>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
 </html>
-
