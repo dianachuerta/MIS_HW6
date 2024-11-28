@@ -4,37 +4,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library 1</title>
    
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.8/dist/echarts.min.js"></script>
+    <!-- Add defer attribute to ensure ECharts is loaded before script runs -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.8/dist/echarts.min.js" defer></script>
 </head>
 <body>
 
     <h1>Library 1</h1>
 
-  
+    <!-- Chart container -->
     <div id="chart" style="width: 600px; height: 400px;"></div>
 
     <script>
-        
-        var option = {
-            xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line'
-            }]
-        };
+      // Define the chart options
+      var option = {
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line'
+        }]
+      };
 
-       window.onload = function() {
+      // Initialize the chart after the DOM is fully loaded
+      window.onload = function() {
         var chart = echarts.init(document.getElementById('chart'));
         chart.setOption(option);
-        console.log(option); // Check the option object
       };
     </script>
 
 </body>
 </html>
+
