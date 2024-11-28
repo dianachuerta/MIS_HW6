@@ -29,9 +29,7 @@
           type: 'line'
         }]
       };
-
-      // Initialize the chart after the DOM is fully loaded
-      window.onload = function() {
+        
         var chart = echarts.init(document.getElementById('chart'));
         chart.setOption(option);
       };
